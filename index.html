@@ -1,28 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semana 9: Forms</title>
     <style>
-        p>span{
+        p>span {
             color: red;
+        }
+
+        .pessoa>div {
+            color: darkblue;
+            display: inline;
+        }
+
+        div.sobrenome {
+            color: green
+        }
+
+        div.idade {
+            color: brown;
+        }
+
+        .pessoa>.sobrenome::before {
+            content: ' ';
+        }
+
+        .pessoa>.idade::before {
+            color: black;
+            content: ', ';
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>Semana 9: Forms</h1>
     </header>
     <main>
         <form action="">
-            <input type="text" name="nome"/>
-            <input type="text" name="sobrenome"/>
-            <input type="number" name="idade"/>
-            <input type="submit" >
-            <input type="reset" >
-            
+            <input type="text" name="nome" />
+            <input type="text" name="sobrenome" />
+            <input type="number" name="idade" />
+            <input type="submit">
+            <input type="reset">
+
         </form>
         <p></p>
         <h2>Visitas Passadas:</h2>
@@ -34,9 +58,8 @@
         const pessoa = document.querySelector('p')
         const lista = document.querySelector('ol')
 
-        function aoEnviar(event)
-        {
-            
+        function aoEnviar(event) {
+
             event.preventDefault();
             console.log("Hello, form!");
             const nome = form.nome.value;
@@ -46,13 +69,13 @@
             console.log(nomeCompleto);
             pessoa.innerHTML = `Olá <span id="pessoa">${nomeCompleto}</span>!`;
 
-            
+
             form.reset();
             form.nome.focus();
 
             adicionarPessoa(nome, sobrenome, idade)
         }
-        function adicionarPessoa(nome, sobrenome, idade){
+        function adicionarPessoa(nome, sobrenome, idade) {
             const li = document.createElement('li');
             const divPessoa = document.createElement('div');
             divPessoa.classList.add('pessoa');
@@ -76,6 +99,7 @@
             lista.appendChild(li);
         }
     </script>
-        
+
 </body>
+
 </html>
